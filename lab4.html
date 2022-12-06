@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        width: 200px;
+    }
+</style>
+<body>
+    <form>
+        <input type="text" id="userName" placeholder="name"  onblur="check()"><br>
+        <small id="err" style="color: red; display: none;">error</small>
+        <br>
+        <input type="password" id="password" placeholder="password"><br>
+        <br>
+        <input type="password" id="confirm password" placeholder="confirm password" onblur="validp()"><br>
+        <br>
+        <input type="email" id="email" placeholder="your email" onblur="valid()"><br>
+        <small id="err2" style="color: red; display: none;">email not valid</small>
+
+        <br>
+        <select id="city">
+            <option value="aswan">aswan</option>
+            <option value="qena">qena</option>
+            <option value="cairo">cairo</option>
+        </select>
+        <input type="checkbox" id="checkbox" name="checkbox">
+        <label for="checkbox"> I accept the terms and conditions</label><br><br>
+        <button onclick="save()">register</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<p id="body"></p>
+    <button onclick="show()" ondblclick="hide()">SHOW IMAGES</button>
+
+<script>
+    
+function check()
+{
+    var name=document.getElementById("userName");
+    if(name.value.length<3)
+    {
+        name.style.border="3px red solid";
+        document.getElementById("err").style.display="block";
+    }
+    else
+    {
+        name.style.border="1px black solid";
+        document.getElementById("err").style.display="none";
+    }
+}
+
+
+function validp(){
+    var pass=document.getElementById("password");
+    var pass2=document.getElementById("confirm password");
+    if (pass.value==pass2.value){
+        pass2.style.border="3px green solid"
+
+    }
+    else{
+        pass2.style.border="5px red solid"
+
+    }
+
+}
+
+
+function valid()
+{
+    var emailValid=document.getElementById("email")
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (emailValid.value.match(validRegex)){
+        emailValid.style.border="2px green solid"
+    }
+    else
+    {
+        emailValid.style.border="2px red solid"
+        document.getElementById("err2").style.display="block";
+
+    }
+}
+
+
+function save()
+{
+   
+    var select=document.getElementById("city");
+    console.log(select.value);
+   
+
+    
+}
+
+// .............................................................................................
+
+
+// task 2)
+
+// function show() {
+
+
+//     var img = document.createElement('img');
+//             img.src ='a1.jpg';
+//           var x=  document.getElementById('body').appendChild(img);
+//         }
+
+       
+
+
+   
+</script>
+
+
+
+
+
+</body>
+</html>
