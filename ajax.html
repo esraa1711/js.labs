@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="body">
+</body>
+
+<script>
+
+
+
+
+
+ function handelr()
+{
+    if(apiTodos.readyState==4&&apiTodos.status==200)
+    {
+     var todos=JSON.parse(apiTodos.responseText).todos
+
+     localStorage.setItem("userData",JSON.stringify(todos))
+     for(var i=0;i<todos.length;i++)
+     {
+       var div=document.createElement("div");
+       div.innerHTML=`<h3>id:${todos[i].id}</h3>
+       <span > todo: ${todos[i].todo}</span>
+       <p>completed: ${todos[i].completed}</p>`
+       document.body.appendChild(div)
+     }
+    }
+}
+
+
+var apiTodos=new XMLHttpRequest(); 
+
+apiTodos.open("GET","https://dummyjson.com/todos");
+
+apiTodos.send();
+
+apiTodos.onreadystatechange=handelr
+
+</script>
+</html>

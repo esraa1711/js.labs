@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+    border: 1px solid rgba(0, 0, 0, 0.457);
+    border-radius: 10px;
+    width:600px;
+    height: 500px;
+    padding: 20px;
+    margin-bottom: 40px;
+    /* box-shadow: 0 12px 15px  rgb(39, 117, 73); */
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+
+    
+}
+
+.img{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 900px;
+
+}
+form{
+    text-align: left;
+
+
+}
+
+.col-1{
+    margin-bottom: 2px;
+    margin-top: 7px;
+    text-transform: capitalize;
+
+}
+
+.col-2 input{
+width: 500px;
+height: 35px;
+border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  border: none;
+  box-shadow: 0 2px 2px 1px gainsboro;
+}
+label{
+    display: inline-block;
+}
+button {
+    background-color: #046340;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin: 20px;
+
+
+  }
+  
+button a{
+  text-decoration: none;
+  color: white;
+}
+
+  button[type=submit]:hover {
+    background-color: #2b692e;
+  }
+  
+
+ 
+</style>
+<body>
+    <div class="container">
+
+
+
+        <form action="">
+        
+            <div class="row">
+                <div class="col-1">
+                  <label for="name">Name</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" id="name" placeholder=" Your name" onblur="check()">
+                </div>
+              </div>
+              
+        
+              <div class="row">
+                <div class="col-1">
+                  <label for="country"> Country</label>
+                </div>
+        <div class="col-2">
+            <input type="text" id="country"  placeholder=" Your country">
+        </div>
+        <div class="row">
+            <div class="col-1">
+              <label for="email">Email</label>
+            </div>
+        <div class="col-2">
+        <input type="email" id="email"  placeholder=" Your email" onblur="validemail()">
+        <i class="uil uil-envelope-alt"></i>
+        
+        </div>
+        
+        
+        
+        
+        
+        <div class="row">
+            <div class="col-1">
+              <label for="pass"> password</label>
+            </div>
+        <div class="col-2">
+        <input type="password" id="pass"  placeholder=" Your password" >
+        <input type="password" id="confirm password" placeholder="confirm password" onblur="validpass()"><br>
+
+        <i class="uil uil-lock"></i>
+        </div>
+        <br>
+        
+                <br>
+                <br>
+           <button onclick="send()">submit</button>
+           <button onclick="sub()">setcookie</button>
+        </form>
+            </div> 
+</body>
+
+<script>
+    
+  var form = document.getElementsByTagName('form')[0];
+
+
+
+  function check()
+{
+    var name=document.getElementById("name");
+    if(name.value.length<3)
+    {
+        name.style.border="3px red solid";
+        document.getElementById("err").style.display="block";
+    }
+    else
+    {
+        name.style.border="1px black solid";
+    }
+}
+
+
+function validpass(){
+    var pass=document.getElementById("pass");
+    var pass2=document.getElementById("confirm password");
+    if (pass.value==pass2.value){
+        pass2.style.border="3px green solid"
+
+    }
+    else{
+        pass2.style.border="5px red solid"
+
+    }
+
+}
+
+
+function validemail()
+{
+    var emailValid=document.getElementById("email")
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (emailValid.value.match(validRegex)){
+        emailValid.style.border="2px green solid"
+    }
+    else
+    {
+        emailValid.style.border="2px red solid"
+
+    }
+
+}
+var country=document.getElementById("country");
+
+
+function send(){
+
+    localStorage.setItem('name', name.value);
+    localStorage.setItem('password', pass.value);
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('country', country.value);
+
+}
+
+
+
+// localStorage.clear();
+
+</script>
+</html>
